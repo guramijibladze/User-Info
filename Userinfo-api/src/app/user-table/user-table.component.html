@@ -5,19 +5,19 @@
             <th scope="col">#</th>
             <th scope="col">name</th>
             <th scope="col">lastname</th>
-            <th scope="col">age</th>
             <th scope="col">email</th>
+            <th scope="col">age</th>      
             <th scope="col">avatar</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>guram</td>
-            <td>jibladze</td>
-            <td>29</td>
-            <td>guramijibladze@gmail.com</td>
-            <td>Otto</td>
+          <tr *ngFor="let user of allUsers">
+            <th scope="row">{{user.id}}</th>
+            <td>{{user.name}}</td>
+            <td>{{user.lastName}}</td>
+            <td style="max-width: 140px;">{{user.email}}</td>
+            <td>{{user.age}}</td>
+            <td><img src="assets/image/363639-200.png" style="max-width: 25px;"></td>
           </tr>
         </tbody>
     </table>

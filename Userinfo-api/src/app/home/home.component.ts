@@ -10,15 +10,39 @@ import { Users } from '../usersModel';
 })
 export class HomeComponent implements OnInit {
   allUsers$:Observable<Users[]>
+  activeButton
 
   constructor(private usersService: UsersService) { }
 
   ngOnInit(): void {
-    this.loadAllUsers()
   }
+
+  setActive(buttonName){
+    this.activeButton = buttonName;
+    if(this.activeButton === 'btn1'){
+      this.loadAllUsers()
+    }else if( this.activeButton === 'btn2'){
+      this.loadUsersuntil30()
+    }else{
+      this.loadUsersAfter30()
+    }
+
+  }
+  
+  isActive(buttonName){
+    return this.activeButton === buttonName;
+  }
+
 
   loadAllUsers(){
     this.allUsers$ = this.usersService.loadAllUsers()
-    this.allUsers$.subscribe(x => console.log(x)) 
+  }
+
+  loadUsersuntil30(){
+    this.allUsers$ = this.usersService.usersUntil30()
+  }
+
+  loadUsersAfter30(){
+    this.allUsers$ = this.usersService.usersAfter30()
   }
 }

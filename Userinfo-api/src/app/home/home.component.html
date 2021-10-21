@@ -8,6 +8,20 @@
         </form>
     </nav>
 
-    <app-user-table></app-user-table>
+    <div class="container text-center mt-5">
+      <div class=" btn-group">
+        <button class="btn btn-secondary " 
+                [class.active]="isActive('btn1')"
+                (click)="setActive('btn1')">all users</button>
+        <button class="btn btn-secondary" 
+                [class.active]="isActive('btn2')"
+                (click)="setActive('btn2')">users until age 30</button>
+        <button class="btn btn-secondary" 
+                [class.active]="isActive('btn3')"
+                (click)="setActive('btn3')">users after age 30</button>
+      </div>
+    </div>
+    
+    <app-user-table [allUsers] = "allUsers$ | async"></app-user-table>
 </div>
 

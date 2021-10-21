@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Users } from '../usersModel';
 
 @Component({
   selector: 'app-user-table',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-table.component.scss']
 })
 export class UserTableComponent implements OnInit {
+
+  @Input()
+  allUsers:Users[] = []
 
   constructor() { }
 
