@@ -2,12 +2,7 @@
     <table class="table">
         <thead>
           <tr>
-            <th scope="col">#</th>
-            <th scope="col">name</th>
-            <th scope="col">lastname</th>
-            <th scope="col">email</th>
-            <th scope="col">age</th>      
-            <th scope="col">avatar</th>
+            <th scope="col" *ngFor="let i of tableColString">{{i}}</th>
           </tr>
         </thead>
         <tbody>

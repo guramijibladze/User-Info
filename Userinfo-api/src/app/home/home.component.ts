@@ -43,6 +43,7 @@ export class HomeComponent implements OnInit {
   }
 
   loadUsersAfter30(){
+    // console.log(this.activeButton)
     this.allUsers$ = this.usersService.usersAfter30()
   }
 }

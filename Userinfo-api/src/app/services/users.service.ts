@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Observable } from 'rxjs';
 import { Users } from '../usersModel';
-import { filter, map } from 'rxjs/operators';
+import { filter, map, shareReplay } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -18,14 +18,16 @@ export class UsersService {
   usersUntil30():Observable<Users[]>{
     return this.http.get<Users[]>(`http://localhost:3000/users`)
       .pipe(
-        map( val => val.filter(val => val.age < 30))
+        map( val => val.filter(val => val.age < 30)),
+        shareReplay()
       )
   }
 
   usersAfter30():Observable<Users[]>{
     return this.http.get<Users[]>(`http://localhost:3000/users`)
       .pipe(
-        map( val => val.filter( val => val.age > 30))
+        map( val => val.filter( val => val.age > 30)),
+        shareReplay()
       )
   }
 

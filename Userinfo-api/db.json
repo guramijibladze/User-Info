@@ -1,12 +1,11 @@
 {
   "users": [
     {
-      "id": 1,
       "name": "guram",
       "lastName": "jibladze",
       "age": 29,
       "email": "guramijibladze@gmail.com",
-      "iconUrl": "../src/environments/image/363639-200.png"
+      "id": 1
     },
     {
       "name": "giorgi",

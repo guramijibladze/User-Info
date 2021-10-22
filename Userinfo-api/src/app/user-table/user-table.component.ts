@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { filter, tap } from 'rxjs/operators';
 import { UsersService } from '../services/users.service';
 
 import { DialogUser, Users } from '../usersModel';
@@ -12,11 +13,19 @@ import { DialogUser, Users } from '../usersModel';
 })
 export class UserTableComponent implements OnInit {
 
+  tableColString:string[] = ['#', 'name', 'lastname', 'email', 'age', 'avatar'];
+
   form:FormGroup;
   dialogUser:DialogUser;
 
   @Input()
   allUsers:Users[] = []
+
+  // @Input()
+  // activeButtonstring
+
+  @Output()
+  private usersListUpdate = new EventEmitter()
   
   constructor(private modalService: NgbModal,
               private fb: FormBuilder,
@@ -41,6 +50,10 @@ export class UserTableComponent implements OnInit {
   saveUser(){
     const changes = this.form.value
     this.usersService.userEdit(this.dialogUser.id, changes)
+    .pipe(
+      filter( val => !!val),
+      tap(() => this.usersListUpdate.emit())
+    )
       .subscribe(
         () => {
           this.modalService.dismissAll();
