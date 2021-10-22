@@ -6,3 +6,11 @@ export interface Users{
     email:string,
     iconUrl:string
 }
+
+export interface DialogUser{
+    id:number,
+    name:string,
+    lastName:string,
+    age:29,
+    email:string,
+}

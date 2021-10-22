@@ -18,8 +18,27 @@
             <td style="max-width: 140px;">{{user.email}}</td>
             <td>{{user.age}}</td>
             <td><img src="assets/image/363639-200.png" style="max-width: 25px;"></td>
+            <td><button type="button" class="btn btn-secondary" 
+                        (click)="openDialog(content, user)">edit</button></td>
           </tr>
         </tbody>
     </table>
 </div>
+
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">User info</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  
+  <app-edit-user [form]="form"></app-edit-user>
+  
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    <button type="button" class="btn btn-warning" (click)="saveUser()">Save</button>
+  </div>
+</ng-template>
 

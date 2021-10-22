@@ -28,4 +28,8 @@ export class UsersService {
         map( val => val.filter( val => val.age > 30))
       )
   }
+
+  userEdit(userId, changes):Observable<any>{
+    return this.http.put(`http://localhost:3000/users/${userId}`, changes)
+  }
 }

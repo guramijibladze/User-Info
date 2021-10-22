@@ -1,5 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Users } from '../usersModel';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { UsersService } from '../services/users.service';
+
+import { DialogUser, Users } from '../usersModel';
 
 @Component({
   selector: 'app-user-table',
@@ -8,12 +12,39 @@ import { Users } from '../usersModel';
 })
 export class UserTableComponent implements OnInit {
 
+  form:FormGroup;
+  dialogUser:DialogUser;
+
   @Input()
   allUsers:Users[] = []
-
-  constructor() { }
+  
+  constructor(private modalService: NgbModal,
+              private fb: FormBuilder,
+              private usersService: UsersService) {}
 
   ngOnInit(): void {
   }
 
+  openDialog(content, user:Users){
+    this.dialogUser = user;
+
+    this.form = this.fb.group({
+      name:[this.dialogUser.name],
+      lastName:[this.dialogUser.lastName],
+      age:[this.dialogUser.age],
+      email:[this.dialogUser.email],
+    })
+
+    this.modalService.open(content, { centered: true });
+  }
+
+  saveUser(){
+    const changes = this.form.value
+    this.usersService.userEdit(this.dialogUser.id, changes)
+      .subscribe(
+        () => {
+          this.modalService.dismissAll();
+        }
+      )
+  }
 }
