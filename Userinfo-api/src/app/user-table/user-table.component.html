@@ -24,9 +24,6 @@
 <ng-template #content let-modal>
   <div class="modal-header">
     <h4 class="modal-title">User info</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
   </div>
   
   <app-edit-user [form]="form"></app-edit-user>

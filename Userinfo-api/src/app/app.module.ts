@@ -9,13 +9,15 @@ import { HomeComponent } from './home/home.component';
 import { UserTableComponent } from './user-table/user-table.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     UserTableComponent,
-    EditUserComponent
+    EditUserComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

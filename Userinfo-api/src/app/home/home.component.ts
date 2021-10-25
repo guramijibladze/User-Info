@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { finalize } from 'rxjs/operators';
+import { LoadingService } from '../services/loading.service';
 import { UsersService } from '../services/users.service';
 import { Users } from '../usersModel';
 
@@ -12,7 +14,8 @@ export class HomeComponent implements OnInit {
   allUsers$:Observable<Users[]>
   activeButton
 
-  constructor(private usersService: UsersService) { }
+  constructor(private usersService: UsersService,
+              private loadingService: LoadingService ) { }
 
   ngOnInit(): void {
   }
@@ -35,15 +38,26 @@ export class HomeComponent implements OnInit {
 
 
   loadAllUsers(){
+    this.loadingService.loadingOn();
     this.allUsers$ = this.usersService.loadAllUsers()
+      .pipe(
+        finalize(() => this.loadingService.loadingOff())
+      )
   }
 
   loadUsersuntil30(){
+    this.loadingService.loadingOn()
     this.allUsers$ = this.usersService.usersUntil30()
+      .pipe(
+        finalize(() => this.loadingService.loadingOff())
+      )
   }
 
   loadUsersAfter30(){
-    // console.log(this.activeButton)
+    this.loadingService.loadingOn()
     this.allUsers$ = this.usersService.usersAfter30()
+      .pipe(
+        finalize(() => this.loadingService.loadingOff())
+      )
   }
 }

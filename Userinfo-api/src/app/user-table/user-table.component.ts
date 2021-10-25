@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { filter, tap } from 'rxjs/operators';
+import { LoadingService } from '../services/loading.service';
 import { UsersService } from '../services/users.service';
 
 import { DialogUser, Users } from '../usersModel';
@@ -21,15 +22,13 @@ export class UserTableComponent implements OnInit {
   @Input()
   allUsers:Users[] = []
 
-  // @Input()
-  // activeButtonstring
-
   @Output()
   private usersListUpdate = new EventEmitter()
   
   constructor(private modalService: NgbModal,
               private fb: FormBuilder,
-              private usersService: UsersService) {}
+              private usersService: UsersService,
+              private loadingService: LoadingService) {}
 
   ngOnInit(): void {
   }
