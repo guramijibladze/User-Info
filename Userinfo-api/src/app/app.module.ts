@@ -10,6 +10,7 @@ import { UserTableComponent } from './user-table/user-table.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { LoadingComponent } from './loading/loading.component';
+import { MessagesComponent } from './messages/messages.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { LoadingComponent } from './loading/loading.component';
     HomeComponent,
     UserTableComponent,
     EditUserComponent,
-    LoadingComponent
+    LoadingComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,

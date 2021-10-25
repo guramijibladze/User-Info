@@ -13,14 +13,14 @@ export class UsersService {
 
   loadAllUsers():Observable<Users[]>{
     return this.http.get<Users[]>(`http://localhost:3000/users`)
-      .pipe(delay(2000))
+      .pipe(delay(1500))
   }
 
   usersUntil30():Observable<Users[]>{
     return this.http.get<Users[]>(`http://localhost:3000/users`)
       .pipe(
         map( val => val.filter(val => val.age < 30)),
-        delay(2000),
+        delay(1500),
         shareReplay()
       )
   }
@@ -29,7 +29,7 @@ export class UsersService {
     return this.http.get<Users[]>(`http://localhost:3000/users`)
       .pipe(
         map( val => val.filter( val => val.age > 30)),
-        delay(2000),
+        delay(1500),
         shareReplay()
       )
   }

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { finalize } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { catchError, finalize } from 'rxjs/operators';
 import { LoadingService } from '../services/loading.service';
+import { MessagesService } from '../services/messages.service';
 import { UsersService } from '../services/users.service';
 import { Users } from '../usersModel';
 
@@ -15,7 +16,8 @@ export class HomeComponent implements OnInit {
   activeButton
 
   constructor(private usersService: UsersService,
-              private loadingService: LoadingService ) { }
+              private loadingService: LoadingService,
+              private messagesService: MessagesService ) { }
 
   ngOnInit(): void {
   }
@@ -41,7 +43,12 @@ export class HomeComponent implements OnInit {
     this.loadingService.loadingOn();
     this.allUsers$ = this.usersService.loadAllUsers()
       .pipe(
-        finalize(() => this.loadingService.loadingOff())
+        finalize(() => this.loadingService.loadingOff()),
+        catchError( err => {
+          const message = "Could not load users";
+          this.messagesService.showErrors(message);
+          return throwError(err);
+        })
       )
   }
 

@@ -10,7 +10,7 @@
     {
       "name": "giorgi",
       "lastName": "kapanadze",
-      "age": 50,
+      "age": 52,
       "email": "giorgikapanadze@gmail.com",
       "id": 2
     },
@@ -23,8 +23,8 @@
       "iconUrl": "../src/environments/image/363639-200.png"
     },
     {
-      "name": "maka",
-      "lastName": "jelizdze",
+      "name": "mery",
+      "lastName": "jejelava",
       "age": 35,
       "email": "makajelizdze@gmail.com",
       "id": 4
