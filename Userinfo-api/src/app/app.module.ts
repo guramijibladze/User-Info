@@ -1,6 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -11,6 +11,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { LoadingComponent } from './loading/loading.component';
 import { MessagesComponent } from './messages/messages.component';
+import { SearchComponent } from './search/search.component';
+import { LoadingService } from './services/loading.service';
+import { AllsearchusersComponent } from './allsearchusers/allsearchusers.component';
 
 @NgModule({
   declarations: [
@@ -19,16 +22,19 @@ import { MessagesComponent } from './messages/messages.component';
     UserTableComponent,
     EditUserComponent,
     LoadingComponent,
-    MessagesComponent
+    MessagesComponent,
+    SearchComponent,
+    AllsearchusersComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     NgbModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [LoadingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,23 @@
+<div class="container">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">name</th>
+            <th scope="col">lastName</th>
+            <th scope="col">age</th>
+            <th scope="col">email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of userName">
+            <th scope="row">{{user.id}}</th>
+            <td>{{user.name}}</td>
+            <td>{{user.lastName}}</td>
+            <td>{{user.age}}</td>
+            <td>{{user.email}}</td>
+          </tr>
+        </tbody>
+    </table>
+</div>
+

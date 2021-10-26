@@ -6,7 +6,7 @@ import { MessagesService } from './services/messages.service';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  providers:[ LoadingService, MessagesService ]
+  providers:[  MessagesService ]
 })
 export class AppComponent {
   title = 'Userinfo-api';

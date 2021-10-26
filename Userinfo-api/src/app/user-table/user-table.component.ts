@@ -2,7 +2,6 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { filter, tap } from 'rxjs/operators';
-import { LoadingService } from '../services/loading.service';
 import { UsersService } from '../services/users.service';
 
 import { DialogUser, Users } from '../usersModel';
@@ -27,8 +26,7 @@ export class UserTableComponent implements OnInit {
   
   constructor(private modalService: NgbModal,
               private fb: FormBuilder,
-              private usersService: UsersService,
-              private loadingService: LoadingService) {}
+              private usersService: UsersService) {}
 
   ngOnInit(): void {
   }

@@ -1,0 +1,30 @@
+<nav class="navbar navbar-light">
+    <form class="container" (ngSubmit)="searchUser()" #form="ngForm">
+        <div class="input-group">
+            <input 
+                type="text" 
+                class="form-control" 
+                placeholder="Username" 
+                [(ngModel)]="userObj.name"
+                name="text">
+            <button class="btn btn-outline-success" type="submit" (click)="openDialog(content)">Search</button>
+        </div>
+    </form>
+</nav>
+
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">User info</h4>
+    </div>
+    
+    <app-allsearchusers [userName]="userName$ | async"></app-allsearchusers>
+    
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+      <button type="button" class="btn btn-warning" (click)="saveUser()">Save</button>
+    </div>
+  </ng-template>
+
+
+

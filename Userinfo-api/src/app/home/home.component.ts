@@ -13,7 +13,7 @@ import { Users } from '../usersModel';
 })
 export class HomeComponent implements OnInit {
   allUsers$:Observable<Users[]>
-  activeButton
+  activeButton:string
 
   constructor(private usersService: UsersService,
               private loadingService: LoadingService,

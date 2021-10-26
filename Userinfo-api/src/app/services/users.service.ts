@@ -1,15 +1,24 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Observable } from 'rxjs';
-import { Users } from '../usersModel';
-import { delay, map, shareReplay } from 'rxjs/operators';
+import { Users, DialogUser } from '../usersModel';
+import { delay, finalize, map, shareReplay } from 'rxjs/operators';
+import { LoadingService } from './loading.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+    private loadingService: LoadingService) { }
+
+  searchUser(username):Observable<DialogUser[]>{
+    return this.http.get<DialogUser[]>(`http://localhost:3000/users`)
+      .pipe(
+        map( val => val.filter( val => val.name === username)),
+      )
+  }
 
   loadAllUsers():Observable<Users[]>{
     return this.http.get<Users[]>(`http://localhost:3000/users`)
