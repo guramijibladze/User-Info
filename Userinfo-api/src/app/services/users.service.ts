@@ -49,5 +49,6 @@ export class UsersService {
 
   userPost(newUser):Observable<Users>{
     return this.http.post<Users>('http://localhost:3000/users', newUser)
+    .pipe(delay(1500))
   }
 }

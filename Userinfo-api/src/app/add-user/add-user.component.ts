@@ -61,11 +61,8 @@ export class AddUserComponent implements OnInit {
   
   
   saveForm(){
-    console.log(this.userForm.value)
     const newUser = this.userForm.value
-    this.usersService.userPost(newUser).subscribe(
-      res => console.log(res)
-    )
+    this.facade.addUser(newUser)
     this.dialogRef.close()
   }
 

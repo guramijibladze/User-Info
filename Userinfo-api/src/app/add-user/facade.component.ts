@@ -1,12 +1,16 @@
-import { TreeError } from '@angular/compiler';
 import { Injectable } from '@angular/core';
-import { AbstractControl } from '@angular/forms';
+import { finalize } from 'rxjs/operators';
+import { LoadingService } from '../services/loading.service';
+import { UsersService } from '../services/users.service';
 
 @Injectable()
 export class FacadeClass{
 
 
-    constructor(){}
+    constructor(
+      private usersService: UsersService,
+      private loadingService: LoadingService
+    ){}
 
     
     nameValidatorMessages = {
@@ -17,6 +21,16 @@ export class FacadeClass{
     lastNameValidatorMessages = {
         required: 'Please enter your last name.',
         minlength: 'The last name must be longer than 3 characters.'
+      }
+
+
+      addUser(user){
+        this.loadingService.loadingOn();
+        this.usersService.userPost(user)
+          .pipe(
+            finalize(() => this.loadingService.loadingOff())
+          )
+          .subscribe()
       }
 
 }
