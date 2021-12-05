@@ -43,8 +43,8 @@ export class UsersService {
       )
   }
 
-  userEdit(userId, changes):Observable<any>{
-    return this.http.put(`http://localhost:3000/users/${userId}`, changes)
+  userEdit(userId, changes):Observable<Users>{
+    return this.http.put<Users>(`http://localhost:3000/users/${userId}`, changes)
   }
 
   userPost(newUser):Observable<Users>{
