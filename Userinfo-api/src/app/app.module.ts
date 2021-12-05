@@ -14,6 +14,17 @@ import { MessagesComponent } from './messages/messages.component';
 import { SearchComponent } from './search/search.component';
 import { LoadingService } from './services/loading.service';
 import { AllsearchusersComponent } from './allsearchusers/allsearchusers.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AddUserComponent } from './add-user/add-user.component';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -24,7 +35,8 @@ import { AllsearchusersComponent } from './allsearchusers/allsearchusers.compone
     LoadingComponent,
     MessagesComponent,
     SearchComponent,
-    AllsearchusersComponent
+    AllsearchusersComponent,
+    AddUserComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +44,17 @@ import { AllsearchusersComponent } from './allsearchusers/allsearchusers.compone
     HttpClientModule,
     NgbModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatCardModule,
+    MatRadioModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatButtonModule,
+    MatDialogModule
   ],
   providers: [LoadingService],
   bootstrap: [AppComponent]

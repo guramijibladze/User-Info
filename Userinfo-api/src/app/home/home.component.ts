@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog  } from '@angular/material/dialog';
 import { Observable, throwError } from 'rxjs';
 import { catchError, finalize } from 'rxjs/operators';
+import { AddUserComponent } from '../add-user/add-user.component';
 import { LoadingService } from '../services/loading.service';
 import { MessagesService } from '../services/messages.service';
 import { UsersService } from '../services/users.service';
@@ -17,9 +19,14 @@ export class HomeComponent implements OnInit {
 
   constructor(private usersService: UsersService,
               private loadingService: LoadingService,
-              private messagesService: MessagesService ) { }
+              private messagesService: MessagesService,
+              private dialogRef: MatDialog ) { }
 
   ngOnInit(): void {
+  }
+
+  openDialog(){
+    this.dialogRef.open(AddUserComponent);
   }
 
   setActive(buttonName){
