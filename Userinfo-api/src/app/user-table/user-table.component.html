@@ -1,20 +1,61 @@
 <div class="container">
     <table class="table">
+      <!-- <table mat-table [dataSource]="allUsers" class="mat-elevation-z8">
+    
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef> No. </th>
+          <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="weight">
+          <th mat-header-cell *matHeaderCellDef> Weight </th>
+          <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="symbol">
+          <th mat-header-cell *matHeaderCellDef> Symbol </th>
+          <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="tableColString"></tr>
+        <tr mat-row *matRowDef="let row; columns: tableColString;"></tr>
+      </table> -->
+               
+      <!--  -->
+
+
+      <!-- [ngClass] = "'color' = 'colorChange'"
+      (mouseover) = "hover(user)"
+      (mouseleave) = "val = false" -->
         <thead>
           <tr>
             <th scope="col" *ngFor="let i of tableColString">{{i}}</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let user of allUsers">
+          <tr *ngFor="let user of allUsers; let i = index"
+              
+              >
             <th scope="row">{{user.id}}</th>
             <td>{{user.name}}</td>
             <td>{{user.lastName}}</td>
             <td style="max-width: 140px;">{{user.email}}</td>
             <td>{{user.age}}</td>
             <td><img src="assets/image/363639-200.png" style="max-width: 25px;"></td>
-            <td><button type="button" class="btn btn-secondary" 
-                        (click)="openDialog(content, user)">edit</button></td>
+            <td><button type="button" 
+                        class="btn btn-secondary" 
+                        (click)="openDialog(content, user)">edit</button>
+            </td>
+            <td>
+              <button type="button"
+                      class="btn btn-danger"
+                      (click)="delete(user)">delete</button>
+            </td>
           </tr>
         </tbody>
     </table>

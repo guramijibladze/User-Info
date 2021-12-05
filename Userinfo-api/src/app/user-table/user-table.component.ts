@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { filter, tap } from 'rxjs/operators';
+import { filter, finalize, tap } from 'rxjs/operators';
+import { LoadingService } from '../services/loading.service';
 import { UsersService } from '../services/users.service';
 
 import { DialogUser, Users } from '../usersModel';
@@ -19,13 +20,14 @@ export class UserTableComponent implements OnInit {
   dialogUser:DialogUser;
 
   @Input()
-  allUsers:Users[] = []
+  allUsers:Users[]
 
   @Output()
   private usersListUpdate = new EventEmitter()
   
   constructor(private modalService: NgbModal,
               private fb: FormBuilder,
+              private loadingService: LoadingService,
               private usersService: UsersService) {}
 
   ngOnInit(): void {
@@ -56,5 +58,22 @@ export class UserTableComponent implements OnInit {
           this.modalService.dismissAll();
         }
       )
+  }
+
+
+  // hover(s){
+    
+  //   console.log(s)
+  // }
+
+  delete(user){
+    this.loadingService.loadingOn();
+    this.usersService.userDelete(user.id)
+      .pipe(
+        // finalize(() => this.loadingService.loadingOff()),
+        tap(() => this.usersListUpdate.emit())
+      )
+      .subscribe()
+    // console.log(x.id)
   }
 }

@@ -51,4 +51,11 @@ export class UsersService {
     return this.http.post<Users>('http://localhost:3000/users', newUser)
     .pipe(delay(1500))
   }
+
+  userDelete(id):Observable<Users>{
+    return this.http.delete<Users>(`http://localhost:3000/users/${id}`)
+      .pipe(
+        delay(1500)
+      )
+  }
 }

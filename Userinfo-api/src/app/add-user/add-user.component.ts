@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { UsersService } from '../services/users.service';
+import { MatDialogRef } from '@angular/material/dialog';
 import { FacadeClass } from './facade.component';
 
 
@@ -16,8 +15,7 @@ export class AddUserComponent implements OnInit {
 
   constructor(private fb:FormBuilder,
               private facade: FacadeClass,
-              private dialogRef: MatDialogRef<AddUserComponent>,
-              private usersService: UsersService) { }
+              private dialogRef: MatDialogRef<AddUserComponent>) { }
 
 
   ngOnInit(): void {
